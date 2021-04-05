@@ -14,24 +14,23 @@ public class AddressbookJson {
         public int Phonenumber;
         public String Name;
         public String Type;
-        public String Dateadded;
-
-        public AddressbookJson(int id,String firstName, String lastName, String address, String city, String state, String email, int phonenumber, String name, String type, String dateadded) {
-            this.Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Address = address;
-            this.city = city;
-            State = state;
-            Email = email;
-            Phonenumber = phonenumber;
-            Name = name;
-            Type = type;
-            Dateadded = dateadded;
-        }
 
 
-        public String getLastName() {
+    public AddressbookJson(int id, String firstName, String lastName, String address, String city, String state, String email, int phonenumber, String name, String type) {
+        this.Id = id;
+        FirstName = firstName;
+        LastName = lastName;
+        Address = address;
+        this.city = city;
+        State = state;
+        Email = email;
+        Phonenumber = phonenumber;
+        Name = name;
+        Type = type;
+    }
+
+
+    public String getLastName() {
             return LastName;
         }
 
@@ -95,14 +94,6 @@ public class AddressbookJson {
             Type = type;
         }
 
-        public String getDate_added() {
-            return Dateadded;
-        }
-
-        public void setDate_added(String date_added) {
-            Dateadded = date_added;
-        }
-
         public String getFirstName() {
             return FirstName;
         }
@@ -125,7 +116,6 @@ public class AddressbookJson {
                     ", Phoneno=" + Phonenumber +
                     ", Name='" + Name + '\'' +
                     ", Type='" + Type + '\'' +
-                    ", Date added=" + Dateadded +
                     '}';
         }
     }
