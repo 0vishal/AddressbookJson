@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
+
 class AddressbookJsonTest {
 
         @BeforeAll
@@ -49,6 +51,20 @@ class AddressbookJsonTest {
         int statusCode= response.statusCode();
         Assertions.assertEquals(201,statusCode);
         Assertions.assertEquals(2,restAssureContactData.length);
+    }
+
+        @Test
+        public void updateContact() throws SQLException {
+        AddressbookJson[] restAssureEmployeeData=getContactList();
+        String ContactJson=new Gson().toJson(restAssureEmployeeData);
+        Assertions.assertEquals(4,restAssureEmployeeData.length);
+        RequestSpecification requestSpecification=RestAssured.given();
+        requestSpecification.header("Content-Type","application/json");
+        requestSpecification.body("{\"FirstName\":\"Vishal\",\"Address\":\"Kamrajnagar\"}");
+        Response response=requestSpecification.put("/AddressBook/update/1");
+
+        int statusCode=response.getStatusCode();
+        Assertions.assertEquals(200,statusCode);
     }
     }
 
