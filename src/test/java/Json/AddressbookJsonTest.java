@@ -66,6 +66,20 @@ class AddressbookJsonTest {
         int statusCode = response.getStatusCode();
         Assertions.assertEquals(200, statusCode);
     }
+    @Test
+    public void deleteContact() throws SQLException {
+        AddressbookJson[] restAssureContactData = getContactList();
+        String ContactJson = new Gson().toJson(restAssureContactData);
+
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header("Content-Type", "application/json");
+        requestSpecification.body(ContactJson);
+        Response response = requestSpecification.delete("/AddressBook/delete/2");
+
+        int statusCode = response.getStatusCode();
+        Assertions.assertEquals(200, statusCode);
+    }
+
 
 
 }
